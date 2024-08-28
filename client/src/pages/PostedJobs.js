@@ -1,152 +1,217 @@
+import React, { useState } from 'react';
+import DefaultLayout from '../components/DefaultLayout';
+import { Row, Col, Form, Tabs, Input, Button, Select } from 'antd';
+import { useDispatch } from 'react-redux';
+import { postJob } from '../redux/actions/jobActions';
+import './PostJob.css'; // Import the CSS file for styling
 
-import React, { useState } from "react";
-import DefaultLayout from "../components/DefaultLayout";
-import { useSelector, useDispatch } from "react-redux";
-import { Table, Modal } from "antd";
-import {
+const { TextArea } = Input;
+const { TabPane } = Tabs;
+const { Option } = Select;
 
-    EditOutlined,
-    OrderedListOutlined,
-} from "@ant-design/icons";
-import moment from "moment";
-import { Link, useNavigate } from "react-router-dom";
+function PostJob() {
+	const [jobInfo, setJobInfo] = useState({});
+	const [activeTab, setActiveTab] = useState('0');
+	const dispatch = useDispatch();
 
+	function onFirstFormFinish(values) {
+		setJobInfo(values);
+		setActiveTab('1');
+	}
 
+	function onFinalFormFinish(values) {
+		const finalObj = { ...jobInfo, ...values };
+		dispatch(postJob(finalObj));
+	}
 
+	return (
+		<div className="post-job-container">
+			<DefaultLayout>
+				<Tabs
+					defaultActiveKey="0"
+					activeKey={activeTab}
+					onChange={setActiveTab}
+					className="custom-tabs"
+				>
+					<TabPane tab="Job Info" key="0">
+						<Form layout="vertical" onFinish={onFirstFormFinish}>
+							<Row gutter={16}>
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="title"
+										rules={[{ required: true }]}
+										label="Title"
+									>
+										<Input />
+									</Form.Item>
+								</Col>
 
-function PostedJobs() {
-    const alljobs = useSelector((state) => state.jobsReducer).jobs;
-    const allusers = useSelector((state) => state.usersReducer).users;
-    const userid = JSON.parse(localStorage.getItem("user"))._id;
-    const userPostedJobs = alljobs.filter((job) => job.postedBy === userid);
-    const Navigate = useNavigate();
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [selectedJob, setSelectedJob] = useState();
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="department"
+										rules={[{ required: true }]}
+										label="Department"
+									>
+										<Input />
+									</Form.Item>
+								</Col>
 
-    const columns = [
-        {
-            title: "Title",
-            dataIndex: "title",
-        },
-        {
-            title: "Company",
-            dataIndex: "company",
-        },
-        {
-            title: "Posted On",
-            dataIndex: "postedOn",
-        },
-        {
-            title: "Applied Candidates",
-            dataIndex: "appliedCandidates",
-        },
-        {
-            title: "Actions",
-            render: (text, data) => {
-                return (
-                    <div className="flex">
-                        <EditOutlined
-                            className='mr-2'
-                            style={{ fontSize: 20 }}
-                            onClick={() => {
-                                Navigate(`/editjob/${data.completeJobData._id}`);
-                            }}
-                        />
-                        <OrderedListOutlined
-                            style={{ fontSize: 20 }}
-                            onClick={() => {
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="experience"
+										rules={[{ required: true }]}
+										label="Experience"
+									>
+										<Input />
+									</Form.Item>
+								</Col>
 
-                                showModal(job);
-                            }}
-                        />
-                    </div>
-                );
-            },
-        },
-    ];
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="salaryFrom"
+										rules={[{ required: true }]}
+										label="Salary From"
+									>
+										<Input type="number" />
+									</Form.Item>
+								</Col>
 
-    const dataSource = [];
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="salaryTo"
+										rules={[{ required: true }]}
+										label="Salary To"
+									>
+										<Input type="number" />
+									</Form.Item>
+								</Col>
+							</Row>
 
-    for (var job of userPostedJobs) {
-        var obj = {
-            title: job.title,
-            company: job.company,
-            postedOn: moment(job.createdAt).format("MMM DD yyyy"),
-            appliedCandidates: job.appliedCandidates.length,
-            completeJobData: job,
-        };
-        dataSource.push(obj);
-    }
+							<Row gutter={16}>
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="skillsRequired"
+										rules={[{ required: true }]}
+										label="Skills"
+									>
+										<Input />
+									</Form.Item>
+								</Col>
 
-    const showModal = (job) => {
-        setIsModalVisible(true);
-        setSelectedJob(job);
-    };
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="minimumQualification"
+										rules={[{ required: true }]}
+										label="Minimum Qualification"
+									>
+										<Select>
+											<Option value="Degree">
+												Degree
+											</Option>
+											<Option value="Plus 2">
+												Plus 2
+											</Option>
+											<Option value="10th">10th</Option>
+										</Select>
+									</Form.Item>
+								</Col>
 
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
+								<Col lg={24} sm={24}>
+									<Form.Item
+										name="smallDescription"
+										rules={[{ required: true }]}
+										label="Small Description"
+									>
+										<TextArea rows={3} />
+									</Form.Item>
+								</Col>
 
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
+								<Col lg={24} sm={24}>
+									<Form.Item
+										name="fullDescription"
+										rules={[{ required: true }]}
+										label="Full Description"
+									>
+										<TextArea rows={6} />
+									</Form.Item>
+								</Col>
+							</Row>
 
-    function CandidatesList() {
-        const candidatesColumns = [
-            {
-                title: "Candidate Id",
-                dataIndex: "candidateId",
-                render: (text, data) => {
-                    return <Link to={`/users/${data.candidateId}`}>{data.candidateId}</Link>
-                }
-            },
-            {
-                title: "Full Name",
-                dataIndex: "fullName",
-            },
-            { title: "Applied Date", dataIndex: "appliedDate" },
-        ];
+							<div className="button-group">
+								<Button
+									type="primary"
+									htmlType="submit"
+									className="next-button"
+								>
+									Next
+								</Button>
+							</div>
+						</Form>
+					</TabPane>
+					<TabPane tab="Company Info" key="1">
+						<Form layout="vertical" onFinish={onFinalFormFinish}>
+							<Row gutter={16}>
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="company"
+										label="Company Name"
+										rules={[{ required: true }]}
+									>
+										<Input />
+									</Form.Item>
+								</Col>
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="email"
+										label="Company Email"
+										rules={[{ required: true }]}
+									>
+										<Input />
+									</Form.Item>
+								</Col>
 
-        var candidatesDatasource = [];
-
-        for (var candidate of selectedJob.appliedCandidates) {
-            var user = allusers.find((user) => user._id === candidate.userid);
-
-            var obj = {
-                candidateId: user._id,
-                fullName: user.firstName + " " + user.lastName,
-                appliedDate: candidate.appliedDate,
-            };
-
-            candidatesDatasource.push(obj);
-        }
-
-        return <Table
-            columns={candidatesColumns}
-            dataSource={candidatesDatasource}
-        />
-    }
-
-    return (
-        <div>
-            <DefaultLayout>
-                <h1>Posted Jobs</h1>
-
-                <Table columns={columns} dataSource={dataSource} />
-
-                <Modal
-                    title="Applied Candidates List"
-                    open={isModalVisible}
-                    closable={false}
-                    onOk={handleOk}
-                    onCancel={handleCancel}
-                    width={800}
-                >
-                    <CandidatesList />
-                </Modal>
-            </DefaultLayout>
-        </div>
-    );
+								<Col lg={8} sm={24}>
+									<Form.Item
+										name="phoneNumber"
+										label="Phone Number"
+										rules={[{ required: true }]}
+									>
+										<Input />
+									</Form.Item>
+								</Col>
+								<Col lg={24} sm={24}>
+									<Form.Item
+										name="companyDescription"
+										label="Company Description"
+										rules={[{ required: true }]}
+									>
+										<TextArea rows={3} />
+									</Form.Item>
+								</Col>
+							</Row>
+							<div className="button-group">
+								<Button
+									onClick={() => {
+										setActiveTab('0');
+									}}
+									className="previous-button"
+								>
+									Previous
+								</Button>
+								<Button
+									type="primary"
+									htmlType="submit"
+									className="post-button"
+								>
+									Post Job
+								</Button>
+							</div>
+						</Form>
+					</TabPane>
+				</Tabs>
+			</DefaultLayout>
+		</div>
+	);
 }
 
-export default PostedJobs;
+export default PostJob;

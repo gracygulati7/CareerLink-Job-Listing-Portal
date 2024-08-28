@@ -1,0 +1,118 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+    padding: 20px;
+}
+
+.login-row {
+    width: 100%;
+}
+
+.branding {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.branding-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: #FFD700; /* Gold highlight for emphasis */
+}
+
+.branding-tagline {
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 10px;
+    color: #f0f0f0;
+}
+
+.login-form-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.login-form-container:hover {
+    transform: translateY(-10px);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+}
+
+.login-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.divider {
+    margin-bottom: 20px;
+    border-color: #ddd;
+}
+
+.login-form .input-field {
+    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+.login-form .input-field:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+}
+
+.login-button {
+    width: 100%;
+    background-color: #FFD700;
+    border-color: #FFD700;
+    border-radius: 30px;
+    padding: 0px 0;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #FFC107;
+    border-color: #FFC107;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.register-highlight {
+    color: #FFD700;
+    font-weight: 600;
+}
+
+.register-link a:hover {
+    color: #FFD700;
+    text-decoration: underline;
+}
