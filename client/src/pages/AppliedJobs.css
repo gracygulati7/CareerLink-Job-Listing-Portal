@@ -1,0 +1,122 @@
+/* AppliedJobs.css */
+.applied-jobs-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.applied-jobs-content {
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.97);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.applied-jobs-content:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.applied-jobs-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.applied-jobs-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #2C5364;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 3px solid #FFD700;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.ant-table-wrapper {
+    background-color: transparent;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.ant-table {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ant-table-thead > tr > th {
+    background-color: #203A43;
+    color: #FFD700;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 14px;
+    border-bottom: 3px solid #2C5364;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.ant-table-thead > tr > th:hover {
+    background-color: #2C5364;
+    color: #FFF;
+}
+
+.ant-table-tbody > tr > td {
+    font-size: 18px;
+    color: #333;
+    background-color: #FFF;
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.4s ease, transform 0.4s ease, color 0.4s ease;
+}
+
+.ant-table-tbody > tr:hover > td {
+    background-color: #f1f1f1;
+    color: #203A43;
+    transform: scale(1.03);
+}
+
+.ant-table-pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.ant-pagination-item, .ant-pagination-next, .ant-pagination-prev {
+    background-color: #FFD700;
+    border-radius: 50%;
+    border: none;
+    color: #203A43;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+.ant-pagination-item:hover, .ant-pagination-next:hover, .ant-pagination-prev:hover {
+    background-color: #FFC107;
+    transform: scale(1.2);
+}
+
+.ant-pagination-item-active {
+    background-color: #FFC107;
+    border-color: #FFC107;
+    color: #FFF;
+}
+
+@media (max-width: 768px) {
+    .applied-jobs-content {
+        padding: 30px;
+    }
+
+    .applied-jobs-title {
+        font-size: 30px;
+    }
+
+    .ant-table-thead > tr > th, 
+    .ant-table-tbody > tr > td {
+        font-size: 16px;
+    }
+}

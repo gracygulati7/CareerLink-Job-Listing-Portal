@@ -1,0 +1,90 @@
+/* Home.css */
+
+.home-container {
+    padding: 20px;
+    background: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+    min-height: 100vh;
+}
+
+.job-div {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.job-div:hover {
+    transform: translateY(-5px);
+}
+
+.job-div h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.job-div p {
+    font-size: 16px;
+    color: #666;
+}
+
+.job-div .flex {
+    display: flex;
+    align-items: center;
+}
+
+.job-div .flex p {
+    margin: 0;
+}
+
+.job-div .flex b {
+    color: #FFD700; /* Match the highlight color from login page */
+}
+
+.job-div hr {
+    border-color: #ddd;
+    margin: 10px 0;
+}
+
+.job-div .justify-content-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-div Button {
+    background-color: #FFD700;
+    border-color: #FFD700;
+    border-radius: 30px;
+    padding: 5px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.job-div Button:hover {
+    background-color: #FFC107;
+    border-color: #FFC107;
+}
+
+.containerres {
+    margin-bottom: 16px;
+}
+
+/* Branding styles */
+.branding {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.branding-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    color: #FFD700; /* Gold highlight for emphasis */
+}
