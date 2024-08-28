@@ -21,7 +21,7 @@ function Register() {
 			<Row justify="center" align="middle" className="register-row">
 				<Col lg={8} md={12} sm={24} className="branding">
 					<h1 className="branding-title" data-aos="fade-up">
-						Career<span className="highlight">Path</span>
+						Career<span className="highlight">Link</span>
 					</h1>
 					<p className="branding-tagline" data-aos="fade-down">
 						Start your journey with us
