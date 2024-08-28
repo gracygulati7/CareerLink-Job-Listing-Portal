@@ -155,7 +155,4 @@ For any questions or feedback, please contact the team members:
   - **Email:** gracy331.be22@chitkara.edu.in
   - **GitHub:** [gracygulati7](https://github.com/gracygulati7)
 
----
-
 Thank you for checking out CareerLink! We hope you find this job listing portal useful and intuitive. We welcome any suggestions or contributions!
-```
